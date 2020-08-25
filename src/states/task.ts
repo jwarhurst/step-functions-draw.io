@@ -13,7 +13,7 @@ TaskState.prototype.create = function (label, json) {
   cell.setAttribute('resource', json.Resource || '');
   cell.setAttribute('timeout_seconds', json.TimeoutSeconds || 60);
   cell.setAttribute('heartbeat_seconds', json.HeartbeatSeconds || '');
-  cell.setAttribute('results_selector', json.ResultsSelector || '{}');
+  cell.setAttribute('results_selector', json.ResultSelector || '{}');
   return cell;
 };
 TaskState.prototype.createDefaultEdge = function (src) {
@@ -76,9 +76,9 @@ TaskState.prototype.expJSON = function (cell, cells) {
     if (value) {
       if (value[0] === "{") {
         if (value !== "{}")
-          data[label].ResultsSelector = JSON.parse(value);
+          data[label].ResultSelector = JSON.parse(value);
       } else {
-        data[label].ResultsSelector = value;
+        data[label].ResultSelector = value;
       }
     }
   }
