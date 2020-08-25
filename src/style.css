@@ -30,7 +30,7 @@ div#jsoneditor.parameters {
   padding: 0px 0px 10px 0px;
 }
 
-div#jsoneditor.results-selector {
+div#jsoneditor.result_selector {
   height: 100px;
   width: 100%;
   overflow: auto;

@@ -197,7 +197,7 @@ export function setupEditData () {
         addJsonEdit(count, nodeName, nodeValue, autocomplete);
         count++;
       }
-      else if (nodeName == 'results_selector') {
+      else if (nodeName == 'result_selector') {
         const autocomplete = {
           applyTo:['value'],
           filter: 'start',

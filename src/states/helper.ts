@@ -142,7 +142,7 @@ export function createState (awssf, name, style, json?) {
   }
   if (awssf.type.match(/Task|Parallel|Map/)) {
     json.ResultSelector = json.ResultSelector || "{}"
-    cell.setAttribute('results_selector', JSON.stringify(json.ResultSelector) || '{}');    
+    cell.setAttribute('result_selector', JSON.stringify(json.ResultSelector) || '{}');    
   }
   cell.awssf = awssf;
   return cell;

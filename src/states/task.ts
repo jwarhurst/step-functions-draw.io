@@ -13,7 +13,7 @@ TaskState.prototype.create = function (label, json) {
   cell.setAttribute('resource', json.Resource || '');
   cell.setAttribute('timeout_seconds', json.TimeoutSeconds || 60);
   cell.setAttribute('heartbeat_seconds', json.HeartbeatSeconds || '');
-  cell.setAttribute('results_selector', json.ResultSelector || '{}');
+  cell.setAttribute('result_selector', json.ResultSelector || '{}');
   return cell;
 };
 TaskState.prototype.createDefaultEdge = function (src) {
@@ -32,8 +32,8 @@ TaskState.prototype.validate = function (cell, res) {
   if (awssfUtils.validateJson(cell.getAttribute("parameters")) == false) {
     res.push("parameters MUST be valid JSON");
   }
-  if (awssfUtils.validateJson(cell.getAttribute("results_selector")) == false) {
-    res.push("results_selector MUST be valid JSON");
+  if (awssfUtils.validateJson(cell.getAttribute("result_selector")) == false) {
+    res.push("result_selector MUST be valid JSON");
   }
   if (awssfUtils.validateNumber(cell.getAttribute("timeout_seconds")) == false) {
     res.push("timeout_seconds MUST be number");
@@ -49,7 +49,7 @@ TaskState.prototype.validate = function (cell, res) {
 };
 TaskState.prototype.orderedAttributes = [
   "label", "type",
-  "resource", "parameters", "results_selector",
+  "resource", "parameters", "result_selector",
   "input_path", "output_path", "result_path",
   "timeout_seconds", "heartbeat_seconds", "comment"
 ];
@@ -71,8 +71,8 @@ TaskState.prototype.expJSON = function (cell, cells) {
       }
     }
   }
-  if (cell.getAttribute("results_selector")) {
-    var value = cell.getAttribute("results_selector");
+  if (cell.getAttribute("result_selector")) {
+    var value = cell.getAttribute("result_selector");
     if (value) {
       if (value[0] === "{") {
         if (value !== "{}")
