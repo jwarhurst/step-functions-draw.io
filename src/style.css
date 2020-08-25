@@ -31,7 +31,7 @@ div#jsoneditor.parameters {
 }
 
 div#jsoneditor.results-selector {
-  height: 159px;
+  height: 100px;
   width: 100%;
   overflow: auto;
   resize: vertical;
