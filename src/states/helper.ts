@@ -141,8 +141,7 @@ export function createState (awssf, name, style, json?) {
     cell.setAttribute('result_path', json.ResultPath || '');
   }
   if (awssf.type.match(/Task|Parallel|Map/)) {
-    cell.setAttribute('results_selector', JSON.stringify(json.ResultsSelector) || '');
-    cell.setAttribute('result_path', json.ResultPath || '');
+    cell.setAttribute('results_selector', JSON.stringify(json.ResultsSelector) || '{}');    
   }
   cell.awssf = awssf;
   return cell;
