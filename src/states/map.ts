@@ -41,6 +41,8 @@ MapState.prototype.expJSON = function (cell, cells) {
   };
   if (cell.getAttribute("parameters"))
     data[label].Parameters = JSON.parse(cell.getAttribute("parameters"));
+    if (cell.getAttribute("results_selector"))
+    data[label].ResultSelector = JSON.parse(cell.getAttribute("results_selector"));
   if (cell.getAttribute("comment"))
     data[label].Comment = cell.getAttribute("comment");
   if (cell.getAttribute("input_path"))
@@ -52,7 +54,7 @@ MapState.prototype.expJSON = function (cell, cells) {
   if (cell.getAttribute("items_path"))
     data[label].ItemsPath = awssfUtils.adjustJsonPath(cell.getAttribute("items_path"));
   if (cell.getAttribute("max_concurrency"))
-    data[label].MaxConcurrency = cell.getAttribute("max_concurrency");
+    data[label].MaxConcurrency = Number(cell.getAttribute("max_concurrency"));
 
   let start;
   for(const i in cell.children) {

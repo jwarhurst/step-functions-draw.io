@@ -28,6 +28,9 @@ TaskState.prototype.validate = function (cell, res) {
   if (awssfUtils.validateJson(cell.getAttribute("parameters")) == false) {
     res.push("parameters MUST be valid JSON");
   }
+  if (awssfUtils.validateJson(cell.getAttribute("paramresults_selectoreters")) == false) {
+    res.push("results_selector MUST be valid JSON");
+  }
   if (awssfUtils.validateNumber(cell.getAttribute("timeout_seconds")) == false) {
     res.push("timeout_seconds MUST be number");
   }
@@ -42,7 +45,7 @@ TaskState.prototype.validate = function (cell, res) {
 };
 TaskState.prototype.orderedAttributes = [
   "label", "type",
-  "resource", "parameters",
+  "resource", "parameters", "results_selector",
   "input_path", "output_path", "result_path",
   "timeout_seconds", "heartbeat_seconds", "comment"
 ];
@@ -61,6 +64,17 @@ TaskState.prototype.expJSON = function (cell, cells) {
           data[label].Parameters = JSON.parse(value);
       } else {
         data[label].Parameters = value;
+      }
+    }
+  }
+  if (cell.getAttribute("results_selector")) {
+    var value = cell.getAttribute("results_selector");
+    if (value) {
+      if (value[0] === "{") {
+        if (value !== "{}")
+          data[label].ResultsSelector = JSON.parse(value);
+      } else {
+        data[label].ResultsSelector = value;
       }
     }
   }
