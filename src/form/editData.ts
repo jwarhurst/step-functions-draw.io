@@ -193,7 +193,29 @@ export function setupEditData () {
         };
         addJsonEdit(count, nodeName, nodeValue, autocomplete);
         count++;
-      } else if (/*nodeName != 'label' && */nodeName != 'placeholders') {
+      }
+      else if (nodeName == 'results_selector') {
+        const autocomplete = {
+          applyTo:['value'],
+          filter: 'start',
+          trigger: 'focus',
+          getOptions: function (text, path, input, editor) {
+            return new Promise(function (resolve, reject) {
+              if (path[0] !== "") return reject();
+              if (input !== 'field') return reject();
+              // @ts-ignore
+              const resource = $("input[list='resources']")[0].value;
+              if (!resource) return reject();
+              const options = awssfUtils.awsServiceParameters[resource.replace(/\.[^.]+$/, '')];
+              if (options.length === 0) return reject();
+              return resolve(options);
+            });
+          }
+        };
+        addJsonEdit(count, nodeName, nodeValue, autocomplete);
+        count++;
+      }
+      else if (/*nodeName != 'label' && */nodeName != 'placeholders') {
         addTextArea(count, nodeName, nodeValue);
         count++;
       }

@@ -29,3 +29,11 @@ div#jsoneditor.parameters {
   resize: vertical;
   padding: 0px 0px 10px 0px;
 }
+
+div#jsoneditor.results-selector {
+  height: 200px;
+  width: 100%;
+  overflow: auto;
+  resize: vertical;
+  padding: 0px 0px 10px 0px;
+}
