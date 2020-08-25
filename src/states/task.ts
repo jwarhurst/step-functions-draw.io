@@ -28,7 +28,7 @@ TaskState.prototype.validate = function (cell, res) {
   if (awssfUtils.validateJson(cell.getAttribute("parameters")) == false) {
     res.push("parameters MUST be valid JSON");
   }
-  if (awssfUtils.validateJson(cell.getAttribute("paramresults_selectoreters")) == false) {
+  if (awssfUtils.validateJson(cell.getAttribute("results_selector")) == false) {
     res.push("results_selector MUST be valid JSON");
   }
   if (awssfUtils.validateNumber(cell.getAttribute("timeout_seconds")) == false) {
