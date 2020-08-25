@@ -108,6 +108,9 @@ export function setupEditData () {
     };
   
     for (var i = 0; i < attrs.length; i++) {
+
+      if (attrs[i] == null) continue;
+
       var nodeName = attrs[i].nodeName;
       var nodeValue = attrs[i].nodeValue;
       if (cell.awssf.hiddenAttributes && cell.awssf.hiddenAttributes.indexOf(nodeName) >= 0) continue;
