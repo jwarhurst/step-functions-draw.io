@@ -10,6 +10,7 @@ TaskState.prototype.create = function (label, json) {
   cell.setAttribute('resource', json.Resource || '');
   cell.setAttribute('timeout_seconds', json.TimeoutSeconds || 60);
   cell.setAttribute('heartbeat_seconds', json.HeartbeatSeconds || '');
+  cell.setAttribute('results_selector', json.ResultsSelector || '');
   return cell;
 };
 TaskState.prototype.createDefaultEdge = function (src) {
