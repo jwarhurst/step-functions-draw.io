@@ -29,9 +29,6 @@ TaskState.prototype.validate = function (cell, res) {
   if (!cell.getAttribute("resource") || !cell.getAttribute("resource").match(/^arn:[^:]+:(states|lambda):[^:]*:[^:]*:[^:]+:.+/)) {
     res.push("resource MUST be a URI that uniquely identifies the specific task to execute");
   }
-  if (awssfUtils.validateJson(cell.getAttribute("parameters")) == false) {
-    res.push("parameters MUST be valid JSON");
-  }
   if (awssfUtils.validateJson(cell.getAttribute("result_selector")) == false) {
     res.push("result_selector MUST be valid JSON");
   }
