@@ -75,7 +75,7 @@ TaskState.prototype.expJSON = function (cell, cells) {
         if (value !== "{}")
           data[label].ResultSelector = JSON.parse(value);
       } else {
-        data[label].ResultSelector = value;
+        //data[label].ResultSelector = value;
       }
     }
   }
