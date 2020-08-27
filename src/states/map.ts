@@ -53,9 +53,7 @@ MapState.prototype.expJSON = function (cell, cells) {
       }
     }
   }
-    
-  if (cell.getAttribute("result_selector"))
-    data[label].ResultSelector = JSON.parse(cell.getAttribute("result_selector"));
+
   if (cell.getAttribute("comment"))
     data[label].Comment = cell.getAttribute("comment");
   if (cell.getAttribute("input_path"))
