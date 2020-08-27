@@ -51,6 +51,7 @@ ParallelState.prototype.expJSON = function (cell, cells) {
   };
   if (cell.getAttribute("parameters"))
     data[label].Parameters = JSON.parse(cell.getAttribute("parameters"));
+    
   if (cell.getAttribute("result_selector")) {
     var value = cell.getAttribute("result_selector");
     if (value) {
@@ -58,7 +59,7 @@ ParallelState.prototype.expJSON = function (cell, cells) {
         if (value !== "{}")
           data[label].ResultSelector = JSON.parse(value);
       } else {
-        //data[label].ResultSelector = value;
+        data[label].ResultSelector = "";
       }
     }
   }

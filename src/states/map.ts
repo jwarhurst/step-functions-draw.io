@@ -41,6 +41,19 @@ MapState.prototype.expJSON = function (cell, cells) {
   };
   if (cell.getAttribute("parameters"))
     data[label].Parameters = JSON.parse(cell.getAttribute("parameters"));
+
+  if (cell.getAttribute("result_selector")) {
+    var value = cell.getAttribute("result_selector");
+    if (value) {
+      if (value[0] === "{") {
+        if (value !== "{}")
+          data[label].ResultSelector = JSON.parse(value);
+      } else {
+        data[label].ResultSelector = "";
+      }
+    }
+  }
+    
   if (cell.getAttribute("result_selector"))
     data[label].ResultSelector = JSON.parse(cell.getAttribute("result_selector"));
   if (cell.getAttribute("comment"))
